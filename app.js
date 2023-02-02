@@ -43,3 +43,12 @@ addTaskBtn.addEventListener("click", function(event) {
   // Save tasks to local storage
   localStorage.setItem("tasks", taskList.innerHTML);
 });
+
+  
+
+
+ localStorage.removeItem("tasks");
+
+
+
+
