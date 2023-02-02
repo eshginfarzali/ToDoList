@@ -15,12 +15,23 @@ addTaskBtn.addEventListener("click", function(event) {
   const task = document.createElement("li");
   task.innerHTML = `
     ${taskValue} 
+    <i class="fas fa-pencil-alt edit-icon"></i>
     <i class="fas fa-times delete-icon"></i>
   `;
   task.addEventListener("click", function(event) {
     if (event.target.className === "fas fa-times delete-icon") {
       task.remove();
       localStorage.setItem("tasks", taskList.innerHTML);
+    } else if (event.target.className === "fas fa-pencil-alt edit-icon") {
+      const newValue = prompt("Edit task", taskValue);
+      if (newValue) {
+        task.innerHTML = `
+          ${newValue} 
+          <i class="fas fa-pencil-alt edit-icon"></i>
+          <i class="fas fa-times delete-icon"></i>
+        `;
+        localStorage.setItem("tasks", taskList.innerHTML);
+      }
     } else {
       task.style.textDecoration =
         task.style.textDecoration === "line-through" ? "" : "line-through";
